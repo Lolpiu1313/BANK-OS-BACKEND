@@ -1,0 +1,40 @@
+@import "@fontsource-variable/inter";
+@import "tailwindcss";
+
+/*
+ * Design tokens. One accent (teal) for completed/positive states, amber for "needs a human",
+ * red only for confirmed errors (blueprint visual rules + IBM Carbon status semantics).
+ * Spacing follows Tailwind's 4px grid; text never goes below 12px.
+ */
+@theme {
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  --color-navy-950: #0b1220;
+  --color-navy-900: #111a2e;
+  --color-navy-800: #1a2540;
+  --color-navy-700: #26324f;
+}
+
+html, body, #root { height: 100%; }
+
+body {
+  @apply bg-slate-50 text-[14px] leading-normal text-slate-800 antialiased;
+  font-feature-settings: "cv11", "ss01"; /* Inter: unambiguous 1/l/I */
+}
+
+/* Figures line up in tables and KPI tiles. */
+.tabular, table { font-variant-numeric: tabular-nums; }
+
+.mono { font-family: var(--font-mono); font-size: 0.9em; }
+
+/* WCAG 2.4.7: a clearly visible keyboard focus indicator on every interactive element. */
+:focus-visible {
+  outline: 2px solid #0d9488;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}

@@ -1,0 +1,9 @@
+# Keep the reference dataset byte-identical on every OS: ground_truth.json stores the SHA-256 of
+# payments.csv, so a CRLF conversion on Windows checkouts would disable the precision/recall check.
+synthetic-data/** -text
+*.pdf binary
+
+# The Maven wrapper scripts must keep their native line endings.
+mvnw text eol=lf
+*.sh text eol=lf
+*.cmd text eol=crlf
